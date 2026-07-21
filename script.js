@@ -2,19 +2,16 @@ const menuButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('.main-nav');
 const header = document.querySelector('.site-header');
 const themeToggle = document.querySelector('.theme-toggle');
-const savedTheme = localStorage.getItem('awj-theme');
-const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
   themeToggle.setAttribute('aria-label', theme === 'dark' ? 'تفعيل الوضع الفاتح' : 'تفعيل الوضع الداكن');
 }
 
-setTheme(savedTheme || (systemPrefersDark ? 'dark' : 'light'));
+setTheme('light');
 themeToggle.addEventListener('click', () => {
   const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
   setTheme(nextTheme);
-  localStorage.setItem('awj-theme', nextTheme);
 });
 
 menuButton.addEventListener('click', () => {
